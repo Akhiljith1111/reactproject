@@ -1,8 +1,7 @@
-// src/MyForm.js
+
 import React, { useState } from 'react';
 
 function MyForm() {
-  // const [formData, setFormData] = useState({
     const initialFormData = {
     firstName: '',
     lastName: '',
@@ -100,7 +99,6 @@ function MyForm() {
           type="radio"
           name="gender"
           value="male"
-          // checked={formData.gender === 'male'}
           onChange={handleChange}
         />
         Male
@@ -110,7 +108,6 @@ function MyForm() {
           type="radio"
           name="gender"
           value="female"
-          // checked={formData.gender === 'female'}
           onChange={handleChange}
         />
         Female
