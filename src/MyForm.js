@@ -20,12 +20,12 @@ function MyForm() {
 
    const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
-    const inputValue = type === 'radio' || type === 'checkbox' ? checked : value;
+    const inputValue = type === 'checkbox' ? checked : value;
   
   setFormData((prevData) => ({
       ...prevData,
       [name]: inputValue,
-    }));
+  }));
   };
 
   const handleSubmit = (event) => {
@@ -33,6 +33,7 @@ function MyForm() {
     console.log('Form data submitted:', formData);
     setFormData(initialFormData);
   };
+  
   return (
     <div>
       <h1>Loan Application Form</h1>  
@@ -44,6 +45,7 @@ function MyForm() {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
+            
           />
         </label>
         <br/>
