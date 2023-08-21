@@ -35,43 +35,43 @@ function MyForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    try {
-      const response = await fetch('http://localhost:5500/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Error saving form data');
+
+      try {
+          const response = await fetch('http://localhost:5500/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Error saving form data');
+          }
+          const data = await response.json();
+            setSavedId(data.id);
+            console.log('Form data submitted:', data);
+            setFormData(initialFormData);
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      };
+      
+    
+      
+      const handleViewClick = async () => {
+    
+        if(savedId) {
+        try {
+          const response = await fetch(`http://localhost:5500/data?id=${savedId}`);
+            const fetchedData = await response.json();
+            setData(fetchedData);
+            console.log(fetchedData);
+         } catch (error) {
+          console.error('Error fetching data:', error);
+        }
       }
-      const data = await response.json();
-        setSavedId(data.id);
-        console.log('Form data submitted:', data);
-        setFormData(initialFormData);
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  };
-  
-
-  
-  const handleViewClick = async () => {
-
-    if(savedId) {
-    try {
-      const response = await fetch(`http://localhost:5500/data?id=${savedId}`);
-        const fetchedData = await response.json();
-        setData(fetchedData);
-        console.log(fetchedData);
-     } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
-  };
+      };
 
 
 
@@ -204,7 +204,8 @@ function MyForm() {
 
         <ul>
           {data.map(item => (
-            <li key={item.id}>{item.fetchedData}</li>
+            // <li key={item.id}>{item.fetchedData}</li>
+            <li key={item.id}>{JSON.stringify(item, null, 2)}</li>
           ))}
         </ul>
       </div>
