@@ -19,7 +19,7 @@ function MyForm() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [savedId, setSavedId] = useState(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
 
    const handleChange = (event) => {
@@ -66,7 +66,7 @@ function MyForm() {
           const response = await fetch(`http://localhost:5500/data?id=${savedId}`);
             const fetchedData = await response.json();
             setData(fetchedData);
-            console.log(fetchedData);
+            console.log(Object.entries(fetchedData));
          } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -198,14 +198,14 @@ function MyForm() {
         {savedId && <p>Form Data: {savedId}</p>}
         <button onClick={handleViewClick} disabled={!savedId} id="view">View Data</button>
 
-       {data.length > 0 && (
+       {Object.entries(data).length> 0 && (
        <div>
         <h2>Fetched Data:</h2>
 
         <ul>
-          {data.map(item => (
+          {Object.entries(data).map(item => (
             // <li key={item.id}>{item.fetchedData}</li>
-            <li key={item.id}>{JSON.stringify(item, null, 2)}</li>
+            <li key={item[0]}>{JSON.stringify(item, null, 2)}</li>
           ))}
         </ul>
       </div>
