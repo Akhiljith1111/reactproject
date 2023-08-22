@@ -12,6 +12,7 @@ function MyForm() {
     gender:'',
     loanAmount:'',
     loanTenure:'',
+    loanTypes:'',
     checkbox:'',
 
   };
@@ -175,12 +176,30 @@ function MyForm() {
             value={formData.loanTenure}
             onChange={handleChange}
           >
+            <option value="">Select loan Tenure...</option>
             <option value="5">5 years</option>
             <option value="10">10 years</option>
             <option value="15">15 years</option>
           </select>
         </label>
         <br/>
+        
+        <label>
+          Loan Types:
+          <select
+          name="loanTypes"
+          value={formData.loanTypes}
+          onChange={handleChange}
+          >
+            <option value="">Select a loan type...</option>
+            <option value="HomeLoan">Home Loan</option>
+            <option value="PersonalLoan">Personal Loan Loan</option>
+            <option value="GoldLoan">Gold Loan</option>
+            <option value="CarLoan">Car Loan</option>
+          </select>
+        </label>
+        <br/>
+
 
         <label>
           <input
@@ -204,7 +223,6 @@ function MyForm() {
 
         <ul>
           {Object.entries(data).map(item => (
-            // <li key={item.id}>{item.fetchedData}</li>
             <li key={item[0]}>{JSON.stringify(item, null, 2)}</li>
           ))}
         </ul>
