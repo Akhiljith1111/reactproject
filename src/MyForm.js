@@ -1,6 +1,11 @@
 
 import React, { useState } from 'react';
+import List from './List';
 
+const valuesOne = ["intrest: 10%", "Tenure : 15 Months", "Maximum Amount: 10000"]
+const valuesTwo = ["intrest: 12%", "Tenure : 10 Months", "Maximum Amount: 15000"]
+const valuesThree = ["intrest: 8%", "Tenure : 12 Months", "Maximum Amount: 12000"]
+const valuesFour = ["intrest: 15%", "Tenure : 20 Months", "Maximum Amount: 20000"] 
 
 function MyForm() {
     const initialFormData = {  
@@ -53,11 +58,12 @@ function MyForm() {
             setSavedId(data.id);
             console.log('Form data submitted:', data);
             setFormData(initialFormData);
-        } catch (error) {
+        } catch (error) { 
           console.error('An error occurred:', error);
         }
       };
       
+     
     
       
       const handleViewClick = async () => {
@@ -199,7 +205,12 @@ function MyForm() {
           </select>
         </label>
         <br/>
-
+        <div>
+              <List header="Personal Loan" values={valuesOne}/>
+              <List header="Home Loan" values={valuesTwo}/>
+              <List header="Car Loan" values={valuesThree}/>
+              <List header="Student Loan" values={valuesFour}/>
+            </div>
 
         <label>
           <input
@@ -213,6 +224,8 @@ function MyForm() {
         </label>
         <br/>
 
+
+
         <button type="submit">Submit</button>
         {savedId && <p>Form Data: {savedId}</p>}
         <button onClick={handleViewClick} disabled={!savedId} id="view">View Data</button>
@@ -220,6 +233,7 @@ function MyForm() {
        {Object.entries(data).length> 0 && (
        <div>
         <h2>Fetched Data:</h2>
+            
 
         <ul>
           {Object.entries(data).map(item => (
@@ -230,7 +244,7 @@ function MyForm() {
     )}
       </form>
       <div id="value"></div>
-      
+    
     </div>
     
   );

@@ -1,0 +1,19 @@
+
+*{
+    width: auto;
+}
+
+.wrapper{
+    min-height: 100px;
+    width: 350px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    background: grey;
+    margin-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#radioOption{
+    display: none;
+}
