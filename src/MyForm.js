@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import List from './List';
 
-const valuesOne = ["intrest: 10%", "Tenure : 15 Months", "Maximum Amount: 10000"]
-const valuesTwo = ["intrest: 12%", "Tenure : 10 Months", "Maximum Amount: 15000"]
-const valuesThree = ["intrest: 8%", "Tenure : 12 Months", "Maximum Amount: 12000"]
-const valuesFour = ["intrest: 15%", "Tenure : 20 Months", "Maximum Amount: 20000"] 
+// const valuesOne = ["intrest: 10%", "Tenure : 15 Months", "Maximum Amount: 10000"]
+// const valuesTwo = ["intrest: 12%", "Tenure : 10 Months", "Maximum Amount: 15000"]
+// const valuesThree = ["intrest: 8%", "Tenure : 12 Months", "Maximum Amount: 12000"]
+// const valuesFour = ["intrest: 15%", "Tenure : 20 Months", "Maximum Amount: 20000"] 
 
 function MyForm() {
     const initialFormData = {  
@@ -21,6 +21,11 @@ function MyForm() {
     checkbox:'',
 
   };
+
+  // const { loanTypes, values } = useState({})
+
+
+    // const [selectedValue, setSelectedValue] = useState("")
 
 
   const [formData, setFormData] = useState(initialFormData);
@@ -79,6 +84,24 @@ function MyForm() {
         }
       }
       };
+
+
+
+
+
+
+      // const handleRadioChange = (event) => {
+      //   const selectedValue = event.target.value;
+      //   setSelectedValue(selectedValue);
+      //   console.log("Selected value:", values);
+      // };
+      
+
+
+const valuesOne = ["intrest: 10%", "Tenure : 15 Months", "Maximum Amount: 10000"]
+const valuesTwo = ["intrest: 12%", "Tenure : 10 Months", "Maximum Amount: 15000"]
+const valuesThree = ["intrest: 8%", "Tenure : 12 Months", "Maximum Amount: 12000"]
+const valuesFour = ["intrest: 15%", "Tenure : 20 Months", "Maximum Amount: 20000"] 
 
 
 
@@ -190,26 +213,13 @@ function MyForm() {
         </label>
         <br/>
         
-        <label>
-          Loan Types:
-          <select
-          name="loanTypes"
-          value={formData.loanTypes}
-          onChange={handleChange}
-          >
-            <option value="">Select a loan type...</option>
-            <option value="HomeLoan">Home Loan</option>
-            <option value="PersonalLoan">Personal Loan Loan</option>
-            <option value="GoldLoan">Gold Loan</option>
-            <option value="CarLoan">Car Loan</option>
-          </select>
-        </label>
-        <br/>
-        <div>
-              <List header="Personal Loan" values={valuesOne}/>
-              <List header="Home Loan" values={valuesTwo}/>
-              <List header="Car Loan" values={valuesThree}/>
-              <List header="Student Loan" values={valuesFour}/>
+        <div> 
+        
+              <List header="Personal Loan" handleChange={handleChange} formData={formData} values={valuesOne} />
+              <List header="Home Loan" handleChange={handleChange} formData={formData} values={valuesTwo}/>
+              <List header="Car Loan" handleChange={handleChange} formData={formData} values={valuesThree}/>
+              <List header="Student Loan" handleChange={handleChange} formData={formData} values={valuesFour}/>
+
             </div>
 
         <label>
@@ -223,7 +233,6 @@ function MyForm() {
           I confirm that all the information given above is True.
         </label>
         <br/>
-
 
 
         <button type="submit">Submit</button>
