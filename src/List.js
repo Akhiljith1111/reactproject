@@ -18,19 +18,15 @@ function List(props) {
 
 <input type="radio"
 
-                    name="courseList"
+                    name="loansTypes"
 
                     value={values}
 
                     id="radioOption"
 
- 
+                    checked={formData.loansTypes === values}
 
-                        checked={formData.courseList === values}
-
- 
-
-                        onChange={handleChange}
+                    onChange={handleChange}
 
                 />
 
@@ -46,11 +42,9 @@ function List(props) {
 
 <li>{str}</li>
 
-                            )
-
-                        })
-
-                    }
+     )
+    })
+ }
 
 </ul>
 
